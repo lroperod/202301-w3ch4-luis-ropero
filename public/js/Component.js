@@ -9,18 +9,17 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
     if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
     return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 };
-var _Component_element, _Component_parentElement;
+var _Component_parentElement;
 export default class Component {
     constructor(parentElement, tag, cssClass = '') {
-        _Component_element.set(this, void 0);
         _Component_parentElement.set(this, void 0);
-        __classPrivateFieldSet(this, _Component_element, document.createElement(tag), "f");
-        __classPrivateFieldGet(this, _Component_element, "f").className = cssClass;
+        this.element = document.createElement(tag);
+        this.element.className = cssClass;
         __classPrivateFieldSet(this, _Component_parentElement, parentElement, "f");
     }
     render() {
         var _a;
-        (_a = __classPrivateFieldGet(this, _Component_parentElement, "f")) === null || _a === void 0 ? void 0 : _a.appendChild(__classPrivateFieldGet(this, _Component_element, "f"));
+        (_a = __classPrivateFieldGet(this, _Component_parentElement, "f")) === null || _a === void 0 ? void 0 : _a.appendChild(this.element);
     }
 }
-_Component_element = new WeakMap(), _Component_parentElement = new WeakMap();
+_Component_parentElement = new WeakMap();
